@@ -53,4 +53,4 @@ jobs:
           docker rm -f contendance-deployment
           docker image rm -f ${{ secrets.DH_USERNAME }}/contendance-deployment:latest
           docker pull ${{ secrets.DOCKERHUB_USERNAME }}/contendance-deployment:latest
-          docker run -d -p 80:80 -p 443:443 --name contendance-deployment ${{ secrets.DH_USERNAME }}/contendance-deployment:latest
+          docker run -d -p 80:80 -p 443:443 --restart always --name contendance-deployment ${{ secrets.DH_USERNAME }}/contendance-deployment:latest
