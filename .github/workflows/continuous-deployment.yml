@@ -1,4 +1,4 @@
-name: Deploy Contendance Web Server on Azure
+name: Deploy Contendance Web Server on DO
 
 on:
   push:
@@ -46,9 +46,9 @@ jobs:
     - name: executing remote ssh commands using password
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
+        host: ${{ secrets.DO_SSH_HOST }}
+        username: ${{ secrets.DO_SSH_USERNAME }}
+        password: ${{ secrets.DO_SSH_PASSWORD }}
         script: |
           docker rm -f contendance-deployment
           docker image rm -f ${{ secrets.DH_USERNAME }}/contendance-deployment:latest
